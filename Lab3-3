@@ -1,0 +1,12 @@
+#How to create pools
+You can create server pools in the services portion of the dhcp server under DHCP,
+You select the gateway and dsubnet mask in association with the vlan if you are using vlans.
+#working with serverPool, 
+this will give a range of ip addresses that can work with, serverPool cannot be delted as you need a default range ot work with
+#Assigning ip helper addresses
+enable
+config t
+config vlan x
+ip helper-address 'DHCP Server'
+#any issues I encontered
+none
