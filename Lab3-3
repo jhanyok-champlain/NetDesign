@@ -6,7 +6,7 @@ this will give a range of ip addresses that can work with, serverPool cannot be 
 #Assigning ip helper addresses
 enable
 config t
-config vlan x
+config interface vlan x
 ip helper-address 'DHCP Server'
 #any issues I encontered
 none
