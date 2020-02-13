@@ -1,0 +1,42 @@
+#Nat router
+Router>enable
+Router#configure terminal
+Router(config)#hostname R1
+R1(config)#interface fastethernet 0/0
+R1(config-if)#ip address 10.0.0.1 255.0.0.0
+R1(config-if)#no shutdown
+R1(config-if)#exit
+R1(config)#interface serial 0/0/0
+R1(config-if)#ip address 20.0.0.2 255.0.0.0
+R1(config-if)#no shutdown
+R1(config-if)#exit
+
+#internal routert
+Router>enable
+Router#configure terminal
+Router(config)#hostname R0
+R0(config)#interface fastethernet 0/0
+R0(config-if)#ip address 30.0.0.1 255.0.0.0
+R0(config-if)#no shutdown
+R0(config-if)#exit
+R0(config)#interface serial 0/0/0
+R0(config-if)#ip address 20.0.0.1 255.0.0.0
+R0(config-if)#clock rate 64000
+R0(config-if)#bandwidth 64
+R0(config-if)#no shutdown
+R0(config-if)#exit
+
+#nat router
+R1(config)#ip route 30.0.0.0 255.0.0.0 20.0.0.1
+
+#internal router
+R1(config)#ip route 30.0.0.0 255.0.0.0 20.0.0.1
+
+Nat router
+R1(config)#interface fastEthernet 0/0
+R1(config-if)#ip nat inside
+R1(config-if)#exit
+R1(config)#interface serial 0/0/0
+R1(config-if)#ip nat outside
+R1(config-if)#exit
+R1(config)#ip nat inside source static 10.0.0.2 50.0.0.1
