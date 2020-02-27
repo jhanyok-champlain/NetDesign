@@ -1,0 +1,17 @@
+1. Use IP info above to configure the network (this means assigning IP addresses to the appropriate router interfaces)
+
+2. Assign ip to the East and West PC's from the appropriate network
+
+3. Configure OSPF on all the routers: 
+
+    Create OSPF instance (router ospf instance_number)  [1 is fine]
+    Tell it to advertise on Area 0 all its (the router you are on) directly connected networks 
+        #(config-router) network network_address wildcard_mask area 0
+
+4. Goal is to have East PC Ping West PC 
+
+Bonus: Add additional services (DHCP etc) and/or networks for extra points
+
+5. Submit Packet Tracer File
+
+ 
