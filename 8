@@ -1,0 +1,15 @@
+To do this - some additional work needs to be done on BTV Router
+Set default route 0.0.0.0 0.0.0.0 to 192.168.2.1 (ISP) 
+Use "default-information originate" in OSPF config to send default route to other routers in the area
+Use "redistribute ospf 1" in BGP config to advertise all of the Foster 202 Co routes
+OSPF for routing within Foster 202 Co
+BGP routing for ISPs, Partner, Customer and external Foster 202
+Define router instance
+router bgp AS_Number_for_Router
+Identify peers 
+(config-router) neighbor ip_of_peer remote-as as-number_of_peer
+Advertise Networks within that AS
+Example: (config-router) network 10.10.52.0 mask 255.255.255.0
+192.168.1.0/30 is in AS 1010
+192.168.3.0/30 and 192.168.4.0/30 are in AS 2054
+Other than the default route on BTV router, no static routes should be used
