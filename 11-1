@@ -1,0 +1,10 @@
+To add an extended versoins
+enter config mode
+#(config)ip access-list extended *name*
+#(config-blah)permit "protocol" x.x.x.x 0.0.0.255 host x.x.x.x eq "port"
+permit ip any any
+
+exit
+go to the interface of the given interface
+interface fastEthernet 0/0 
+ip access-group *name* in/out 
